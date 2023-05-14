@@ -17,15 +17,21 @@ lazy val common = (project in file("common"))
   .settings(commonSettings)
   .settings(
     libraryDependencies ++= Seq(
-      "org.postgresql" % "postgresql" % "42.0.0",
-      "org.flywaydb" % "flyway-core" % "4.1.2")
+      "org.postgresql" % "postgresql" % "42.5.0",
+      "org.flywaydb" % "flyway-core" % "9.17.0",
+
+      // log
+      "org.log4s" %% "log4s" % "1.8.2")
   )
 
 lazy val slick = (project in file("slick"))
   .settings(commonSettings)
   .settings(
     libraryDependencies ++= Seq(
-      "com.typesafe.slick" %% "slick" % "3.2.1"
+      "com.typesafe.slick" %% "slick" % "3.2.1",
+
+      // slick use SLF4j, add provider
+      "org.slf4j" % "slf4j-log4j12" % "2.0.7"
     )
   )
   .dependsOn(common)
